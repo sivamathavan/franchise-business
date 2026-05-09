@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Brew Studio Coimbatore | Premier Coffee Franchise</title>
+    <meta name="description" content="The Brew Studio's premium franchise outlet in Coimbatore. Enjoy world-class coffee, artisanal snacks, and a cozy atmosphere. Local heart, global standards.">
+    <meta name="keywords" content="The Brew Studio Coimbatore, Best Cafe in Coimbatore, Coffee Franchise Coimbatore, RS Puram Cafe, Artisanal Coffee Tamil Nadu">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            --brand-primary: #4E342E; /* Coffee Brown */
+            --brand-secondary: #D4A373; /* Golden Tan */
+            --brand-bg: #FFF3E0; /* Warm Cream */
+            --white: #FFFFFF;
+            --text-dark: #2C1810;
+            --text-muted: #8D6E63;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- Aroma Float --- */
+        @keyframes aromaFloat {
+            0% { transform: translateY(0); opacity: 0.8; }
+            50% { transform: translateY(-10px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.8; }
+        }
+
+        .aroma-text {
+            animation: aromaFloat 4s ease-in-out infinite;
+        }
+
+        /* --- Scroll Reveal --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Info Glow --- */
+        .info-card:hover {
+            box-shadow: 0 0 30px rgba(78, 52, 46, 0.15);
+            border-bottom-color: var(--brand-secondary);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            background: var(--brand-primary);
+            color: var(--white);
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            color: var(--brand-primary);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span { color: var(--brand-secondary); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--brand-secondary); }
+
+        .cta-btn {
+            background: var(--brand-primary);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover { background: var(--brand-secondary); transform: translateY(-2px); }
+
+        /* --- Hero --- */
+        #hero {
+            height: 75vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2078&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 8%;
+            margin-top: 60px;
+        }
+
+        .hero-content { max-width: 800px; }
+        .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.1; font-weight: 800; animation: slideUp 1s ease both; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 2.5rem; opacity: 0.9; font-weight: 300; animation: slideUp 1s ease 0.2s both; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Sections --- */
+        section { padding: 8rem 8%; }
+        .section-title { text-align: center; margin-bottom: 5rem; }
+        .section-title h2 { font-size: 2.5rem; color: var(--brand-primary); font-weight: 800; }
+        .section-title .line { width: 50px; height: 4px; background: var(--brand-secondary); margin: 1rem auto; }
+
+        /* --- Outlet Highlight --- */
+        .outlet-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: -5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--brand-primary);
+            transition: var(--transition);
+        }
+
+        .info-card:hover { transform: translateY(-10px); }
+        .info-card i { font-size: 2.5rem; color: var(--brand-secondary); margin-bottom: 1.5rem; display: block; }
+        .info-card h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .info-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- Grid Layouts --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .card-img { height: 250px; overflow: hidden; background: #f5f5f5; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .card-info { padding: 2.5rem; }
+        .card-info h3 { margin-bottom: 0.8rem; font-size: 1.3rem; }
+        .card-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+
+        /* --- Local Offers --- */
+        .offers-banner {
+            background: var(--brand-primary);
+            color: var(--white);
+            padding: 5rem 8%;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 8%;
+        }
+
+        .offer-text h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .offer-text span { color: var(--brand-secondary); font-weight: 800; font-size: 1.1rem; }
+
+        /* --- WhatsApp Float --- */
+        .wa-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 10000;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #F8F9FA;
+            padding: 6rem 8% 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h4 { color: var(--brand-primary); margin-bottom: 2rem; text-transform: uppercase; font-size: 0.9rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-muted); }
+        .footer-col ul li a { text-decoration: none; color: var(--text-muted); transition: var(--transition); }
+        .footer-col ul li a:hover { color: var(--brand-primary); }
+
+        /* --- Page Management --- */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* Filter */
+        .filter-strip { display: flex; justify-content: center; gap: 1rem; margin-bottom: 4rem; overflow-x: auto; padding-bottom: 10px; }
+        .filter-btn { padding: 0.8rem 1.8rem; border-radius: 30px; border: 1px solid #DDD; background: transparent; cursor: pointer; font-weight: 600; transition: var(--transition); }
+        .filter-btn.active { background: var(--brand-primary); color: var(--white); border-color: var(--brand-primary); }
+
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .offers-banner { flex-direction: column; text-align: center; gap: 2rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/919000000000" class="wa-float">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+        <a href="#" class="logo" onclick="showPage('home')">
+            <div class="logo-icon">B</div>
+            <div class="logo-text">THE BREW<span>STUDIO</span></div>
+        </a>
+        <div class="nav-links">
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#" onclick="showPage('menu')">Our Menu</a>
+            <a href="#" onclick="showPage('offers')">Local Offers</a>
+            <a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('local-about').scrollIntoView({behavior:'smooth'}),100)">About This Outlet</a>
+            <a href="#" onclick="showPage('contact')">Contact</a>
+        </div>
+        <a href="#menu" class="cta-btn" onclick="showPage('menu')">Order Now</a>
+    </nav>
+
+    <!-- --- HOME PAGE --- -->
+    <main id="home-page" class="page active">
+        <header id="hero">
+            <div class="hero-content">
+                <h1>The Brew Studio — Now in Coimbatore.</h1>
+                <p>Bringing global coffee standards to the heart of RS Puram. Experience artisanal blends, hand-crafted snacks, and the perfect local vibe.</p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center;">
+                    <a href="#" class="cta-btn" style="padding: 1.2rem 3rem;" onclick="showPage('menu')">Explore Menu</a>
+                    <a href="https://wa.me/919000000000" class="cta-btn" style="background: var(--white); color: var(--brand-primary); padding: 1.2rem 3rem;">WhatsApp Order</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="outlet-info reveal">
+            <div class="info-card"><i class="ph ph-map-pin"></i><h3>Find Us</h3><p>RS Puram, Coimbatore</p></div>
+            <div class="info-card"><i class="ph ph-clock"></i><h3>Timings</h3><p>8:00 AM - 11:00 PM</p></div>
+            <div class="info-card"><i class="ph ph-phone"></i><h3>Contact</h3><p>+91 90000 00000</p></div>
+        </div>
+
+        <section id="featured-products">
+            <div class="section-title">
+                <h2>Our Global Favorites</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid" id="home-menu-grid">
+                <!-- 6 items -->
+            </div>
+        </section>
+
+        <div class="offers-banner reveal">
+            <div class="offer-text">
+                <span class="aroma-text" style="display: block;">EXCLUSIVE COIMBATORE OFFER</span>
+                <h2>Flat 20% Off on Your First Order!</h2>
+                <p>Use Code: CBESTUDIO at checkout or show this on WhatsApp.</p>
+            </div>
+            <a href="https://wa.me/919000000000" class="cta-btn" style="background: var(--white); color: var(--brand-primary); padding: 1.2rem 3rem;">Claim Now</a>
+        </div>
+
+        <section id="local-about">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000&auto=format&fit=crop" alt="Cafe Interior" style="width: 100%; border-radius: 15px;">
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Local Heart, Global Standards.</h2>
+                    <p style="margin-bottom: 1.5rem;">Managed by local entrepreneurs who love coffee as much as you do, our RS Puram outlet is designed to be your third home.</p>
+                    <p style="margin-bottom: 2rem;">From the music we play to the community events we host, every detail is crafted to celebrate the vibrant spirit of Coimbatore.</p>
+                    <div style="display: flex; gap: 2rem;">
+                        <div><h4 style="color: var(--brand-primary); font-size: 1.5rem;">5+</h4><p>Baristas</p></div>
+                        <div><h4 style="color: var(--brand-primary); font-size: 1.5rem;">50+</h4><p>Cozy Seats</p></div>
+                        <div><h4 style="color: var(--brand-primary); font-size: 1.5rem;">100%</h4><p>Arabica</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" style="background: var(--brand-bg);">
+            <div class="section-title">
+                <h2>What Locals Say</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid">
+                <div class="card" style="padding: 3rem; text-align: center; border: none;">
+                    <p style="font-style: italic; margin-bottom: 2rem;">"Finally, a world-class coffee spot in RS Puram! Their Hazelnut Latte is just perfect."</p>
+                    <h4>— Anirudh K., Coimbatore</h4>
+                </div>
+                <div class="card" style="padding: 3rem; text-align: center; border: none;">
+                    <p style="font-style: italic; margin-bottom: 2rem;">"Great vibe for working or hanging out with friends. The staff is extremely polite."</p>
+                    <h4>— Divya S., Coimbatore</h4>
+                </div>
+                <div class="card" style="padding: 3rem; text-align: center; border: none;">
+                    <p style="font-style: italic; margin-bottom: 2rem;">"The local combo offers are great value. Love the community events they host."</p>
+                    <h4>— Karthik M., Coimbatore</h4>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- --- MENU PAGE --- -->
+    <main id="menu-page" class="page">
+        <section style="padding-top: 10rem;">
+            <div class="section-title">
+                <h2>Our Craft Menu</h2>
+                <div class="line"></div>
+            </div>
+            <div class="filter-strip">
+                <button class="filter-btn active" onclick="filterMenu('all', this)">All</button>
+                <button class="filter-btn" onclick="filterMenu('hot', this)">Hot Coffee</button>
+                <button class="filter-btn" onclick="filterMenu('cold', this)">Cold Brews</button>
+                <button class="filter-btn" onclick="filterMenu('food', this)">Artisanal Food</button>
+            </div>
+            <div class="grid" id="full-menu-grid">
+                <!-- All items -->
+            </div>
+        </section>
+    </main>
+
+    <!-- --- OFFERS PAGE --- -->
+    <main id="offers-page" class="page">
+        <section style="padding-top: 10rem;">
+            <div class="section-title">
+                <h2>Coimbatore Exclusive Deals</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1541167760496-162955ed8a9f?q=80&w=800" alt="Combo"></div>
+                    <div class="card-info">
+                        <h3>Morning Hustle Combo</h3>
+                        <p>Any Hot Coffee + Croissant for just ₹299. Available 8 AM - 11 AM.</p>
+                        <a href="https://wa.me/919000000000" class="cta-btn">Order Now</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=800" alt="Group"></div>
+                    <div class="card-info">
+                        <h3>Student Squad Deal</h3>
+                        <p>Show your ID and get 15% Off on group orders of 4 or more.</p>
+                        <a href="https://wa.me/919000000000" class="cta-btn">Get Offer</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- --- CONTACT PAGE --- -->
+    <main id="contact-page" class="page">
+        <section style="padding-top: 10rem;">
+            <div class="section-title">
+                <h2>Visit Us Today</h2>
+            </div>
+            <div class="grid" style="grid-template-columns: 1.2fr 0.8fr;">
+                <div style="background: #F9F9F9; padding: 4rem; border-radius: 15px;">
+                    <h3>Drop an Inquiry</h3>
+                    <form style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <input type="text" placeholder="Name" style="padding: 1rem; border: 1px solid #ddd; outline: none;">
+                        <input type="tel" placeholder="Phone" style="padding: 1rem; border: 1px solid #ddd; outline: none;">
+                        <textarea placeholder="Message / Catering Request..." rows="5" style="padding: 1rem; border: 1px solid #ddd; outline: none;"></textarea>
+                        <button type="submit" class="cta-btn">Send Message</button>
+                    </form>
+                </div>
+                <div style="padding: 2rem;">
+                    <h4>RS Puram Outlet</h4>
+                    <p style="margin-bottom: 2rem;">No. 42, West Sambandam Road,<br>RS Puram, Coimbatore,<br>Tamil Nadu 641002</p>
+                    
+                    <h4>Contact Info</h4>
+                    <p style="margin-bottom: 2rem;">+91 90000 00000<br>cbe@brewstudio.in</p>
+                    
+                    <a href="https://wa.me/919000000000" class="cta-btn" style="background: #25D366; display: block; text-align: center;">WhatsApp for Orders</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-text">THE BREW<span>STUDIO</span></div>
+                <p style="margin-top: 1rem;">RS Puram, Coimbatore</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('menu')">Menu</a></li>
+                    <li><a href="#" onclick="showPage('offers')">Offers</a></li>
+                    <li><a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('local-about').scrollIntoView({behavior:'smooth'}),100)">Our Story</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li>Privacy Policy</li>
+                    <li>Terms of Use</li>
+                    <li>Franchise Info</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div style="display: flex; gap: 1.5rem; font-size: 1.5rem; margin-top: 1rem;">
+                    <i class="ph ph-instagram-logo"></i>
+                    <i class="ph ph-facebook-logo"></i>
+                    <i class="ph ph-twitter-logo"></i>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 The Brew Studio Coimbatore. Locally Brewed by Antigravity.
+        </div>
+    </footer>
+
+    <script>
+        const menu = [
+            { name: "Signature Cold Brew", cat: "cold", desc: "18-hour steeped artisanal Arabica.", price: "₹210", img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=800" },
+            { name: "Classic Cappuccino", cat: "hot", desc: "Double shot espresso with velvety foam.", price: "₹180", img: "https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=800" },
+            { name: "Smashed Avocado Toast", cat: "food", desc: "Topped with feta and local spices.", price: "₹320", img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800" },
+            { name: "Vietnamese Iced Coffee", cat: "cold", desc: "Strong espresso with condensed milk.", price: "₹240", img: "https://images.unsplash.com/photo-1461023233367-3081055a1d2c?q=80&w=800" },
+            { name: "Cortado", cat: "hot", desc: "Equal parts espresso and steamed milk.", price: "₹190", img: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=800" },
+            { name: "Paneer Tikka Panini", cat: "food", desc: "Grilled sourdough with tandoori paneer.", price: "₹280", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=800" }
+        ];
+
+        function loadMenu(filter = 'all') {
+            const hGrid = document.getElementById('home-menu-grid');
+            const fGrid = document.getElementById('full-menu-grid');
+            
+            const render = (arr) => arr.map(i => `
+                <div class="card">
+                    <div class="card-img">
+                        <img src="${i.img}&auto=format&fit=crop" alt="${i.name}" onerror="this.src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=500';">
+                    </div>
+                    <div class="card-info">
+                        <h3>${i.name}</h3>
+                        <p>${i.desc}</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-weight:800; color:var(--brand-primary);">${i.price}</span>
+                            <a href="https://wa.me/919000000000?text=Order for ${i.name}" class="cta-btn" style="padding: 0.5rem 1rem;">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            if (hGrid) hGrid.innerHTML = render(menu.slice(0, 6));
+            if (fGrid) {
+                const filtered = filter === 'all' ? menu : menu.filter(i => i.cat === filter);
+                fGrid.innerHTML = render(filtered);
+            }
+        }
+
+        function filterMenu(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            loadMenu(cat);
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId + '-page').classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // --- Reveal Logic ---
+        function initReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(r => observer.observe(r));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMenu();
+            initReveal();
+        });
+    </script>
+</body>
+</html>
